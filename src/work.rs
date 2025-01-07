@@ -1,15 +1,11 @@
+use crate::selector_map::SelectorMap;
+
 use super::network;
 use super::scraping;
 pub struct WorkHeader {
     stats: Stats,
 }
-impl WorkHeader {
-    pub fn from(url: &str) -> Self {
-        Self {
-            stats: Stats::from(url),
-        }
-    }
-}
+impl WorkHeader {}
 struct Stats {
     language: String,
     words: String,
@@ -30,11 +26,5 @@ impl Stats {
             kudos: "".to_owned(),
             hits: "".to_owned(),
         }
-    }
-    pub fn from(url: &str) -> Self {
-        println!("Scraping: {url}");
-        let response = network::get_response(url, 5);
-        scraping::scrape_header(response);
-        Stats::new()
     }
 }
