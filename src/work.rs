@@ -1,4 +1,5 @@
 use super::network;
+use super::scraping;
 pub struct WorkHeader {
     stats: Stats,
 }
@@ -32,6 +33,8 @@ impl Stats {
     }
     pub fn from(url: &str) -> Self {
         println!("Scraping: {url}");
+        let response = network::get_response(url, 5);
+        scraping::scrape_header(response);
         Stats::new()
     }
 }
