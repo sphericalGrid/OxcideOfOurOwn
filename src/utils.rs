@@ -3,6 +3,9 @@ const PROTOCOL: &str = "https://";
 const WORK: &str = "works/";
 pub struct URLBuilder {}
 impl URLBuilder {
+    pub fn new() -> Self {
+        Self {}
+    }
     pub fn get_work_url_by_id(&self, id: &str) -> String {
         format!("{PROTOCOL}{BASE_URL}{WORK}/{id}")
     }
